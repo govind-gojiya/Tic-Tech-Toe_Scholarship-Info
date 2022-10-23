@@ -1,0 +1,632 @@
+<?php
+include('database/include.php');
+
+?>
+<!DOCTYPE html>
+<!-- saved from url=(0035)https://scholarships.gov.in/enghome -->
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+    <meta name="viewport" content="width=device-width">
+    <title>Home - National/international Scholarship Portal</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="https://scholarships.gov.in/public/Content/img/favicon.ico" type="image/png">
+    <!-- <link rel="stylesheet" href="https://fontawesome.com/releases/v5.15/css/all.css"/> -->
+    <script src="https://kit.fontawesome.com/f2b7c53ab4.js" crossorigin="anonymous"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+    <style>
+        /* Make the image fully responsive */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .carousel-inner img {
+            width: 100%;
+            /*height: 250px;*/
+        }
+
+        .carousel-inner .carousel-item>img {
+            -webkit-animation: thing 6s;
+            -o-animation: thing 6s;
+            animation: thing 6s;
+        }
+
+        @keyframes thing {
+            from {
+                transform: scale(1, 1);
+            }
+
+            to {
+                transform: scale(1.1, 1.1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <section class="govtinfo">
+        <div class="container-fluid m-0 p-0">
+            <nav class="navbar navbar-expand-lg fs-5" style="background-color: #cfe789">
+                <div class="container-fluid">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                            <a class="nav-link active" aria-current="page" href="Homepage.php" style="color: white;">Home</a>
+                            <a class="nav-link" href="admin_panel1.php" style="color: white;">Authenticate user</a>
+                            <a class="nav-link" href="s_dashboard.php" style="color: white;">Authenticate Scholarship</a>
+                            <a class="nav-link" href="special_useer.php" style="color: white;">Add Scholarships</a>
+                            <?php
+                            if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+                            ?> <li class="list-inline-item fs-3">
+                                    <a title="Skip to main content" href="https://scholarships.gov.in/enghome#skipcontent">
+                                        Login : <?php echo $_SESSION['useremail']; ?>
+                                    </a>
+                                    <a href="./logout.php" class="btn btn-primary ml-2">Logout</a>
+                                    </form>
+                                <?php } else { ?>
+                                    <a title="Skip to main content" href="./login_regi.php">
+                                        Login : welcome user
+                                    </a>
+                                <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </section>
+    <section class="headertop">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 py-4">
+                    <h1 class="text-center" style="color:#7ca51d;">ScholarshipInfo Portal</h1>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div id="carouselExampleControls" class="carousel slide" style="height: 60vh;" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://th.bing.com/th/id/R.a28d0c5bb6ffc765e759795c201edc3d?rik=aaqeLciIRi4Wfw&riu=http%3a%2f%2foahs.us%2fwp-content%2fuploads%2f2019%2f03%2fScholarship-Opportunities-01.jpg&ehk=W1LSF5xvp3tjY3KrQ9UG6bBogGmNbx2m9WNEtklGpOs%3d&risl=&pid=ImgRaw&r=0" class="img-fluid" style="width: 100%;height: 60vh;" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://th.bing.com/th/id/OIP.nn0caWqMXPasFIhHXlb6fQHaE7?w=248&h=180&c=7&r=0&o=5&dpr=1.25&pid=1.7" class="img-fluid" style="width: 100%;height: 60vh;" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://th.bing.com/th/id/OIP.E_D2cmwRANoSy-_xOM-79AHaEX?w=279&h=180&c=7&r=0&o=5&dpr=1.25&pid=1.7" class="img-fluid" style="width: 100%;height: 60vh;" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <div id="skipcontent"></div>
+
+        <section class="pt-3 mt-1 p1-3 animation-pullDown" style="background: #cfe789">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl col-lg-3 col-md-6 col-sm-6 mb-3">
+                        <div class="card">
+                            <div class="card-header cardHead cardbg1 " style="background:#7ca51d;">
+                                <span class="cardHeadText" title="" data-toggle="tooltip" data-original-title="" style="color:aliceblue ">
+                                    <i class="fa fa-info-circle"></i> About Us
+                                </span>
+                            </div>
+                            <div class="card-body bodycorner">
+                                <div id="accordionAbout" class="accordion">
+                                    <div class="card mb-0">
+                                        <ul class="cardlistinner">
+                                            <li>
+                                                <a href="https://scholarships.gov.in/aboutUs" title="" data-toggle="tooltip" data-original-title=" About NSP">
+                                                    About NSP / ISP
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://scholarships.gov.in/enghome#schemesonNSP" title="" data-toggle="tooltip" data-original-title="Schemes on NSP">
+                                                    Schemes on NSP/ISP
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl col-lg-3 col-md-6 col-sm-6 mb-3">
+                        <div class="card">
+                            <div class="card-header cardHead cardbg1" style="background:#7ca51d;">
+                                <span class="cardHeadText" style="color:aliceblue">
+                                    <i class="fa fa-user"></i> Applicant Corner
+                                </span>
+                            </div>
+                            <div class="card-body bodycorner">
+                                <div id="accordion" class="accordion">
+                                    <div class="card mb-0">
+                                        <div class="card-header card-header-inner collapsed" data-toggle="collapse" data-parent="#accordion" href="#applicant_login" aria-expanded="false">
+                                            <div class="linkcorner">
+
+
+                                                <div class="card-header card-header-inner" data-toggle="collapse" data-parent="#accordion" href="#applicant_schemeinfo" aria-expanded="true">
+                                                    <div class="linkcorner">
+                                                        <a class="d-block" style="text-decoration: none;color:black">
+                                                            Scheme Information <i class="fa pull-right"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div id="applicant_schemeinfo" class="collapse show" data-parent="#accordion" style="">
+                                                    <ul class="cardlistinner">
+                                                        <li>
+                                                            <a href="https://scholarships.gov.in/fresh/schemeEligibiltyPage" title="" data-toggle="tooltip" data-original-title="Check your Eligibility">
+                                                                Check your Eligibility
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="https://scholarships.gov.in/public/FAQ/FAQ_NSP2.0_Students_Ver3_Updated.pdf" target="_blank" title="" data-toggle="tooltip" data-original-title="Student FAQ">
+                                                                Student FAQ
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="https://scholarships.gov.in/fresh/onlineInstituteSearchIndex" title="" data-toggle="tooltip" data-original-title="Search Institute/ School/ ITI registered with NSP">
+                                                                <strong> Search Institute/ School/ ITI registered with NSP
+                                                                </strong>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            </div>
+            </div>
+        </section>
+        <script>
+
+        </script>
+
+
+        <section class="contentsection pt-3 mb-2">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="card mb-2">
+                            <div class="card-header notificationbg " style="background:#7ca51d;">
+                                <span class="text-white notification">
+                                    <i class="fa fa-bullhorn"></i> Notice Board - For Students
+                                </span>
+                            </div>
+                            <div class="card-body notificationbody border border-primary">
+                                <marquee onmouseover="this.stop()" onmouseout="this.start()" behavior="scroll" scrollamount="3" direction="up" loop="infinite" height="165px">
+                                    <ul class="notificationlist list-unstyled text-justify">
+                                        <li>
+                                            <i class="fa fa-info-circle">
+                                            </i>&nbsp;All grievances related to delay in Application Verification, Scheme
+                                            Selection / Eligibility, extension of verification dates,
+                                            delay in Scholarship Payment should be addressed to the grievance redressal /
+                                            Nodal officer of the concerned scheme owner ministry / Department.
+                                            The details of grievance redressal / nodal officers is available under
+                                            “Officer’s Information” section at “Officer’s Corner”section on the portal.
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-info-circle">
+                                            </i>&nbsp;For problems related to the portal’s workflow, ie. functional or
+                                            operational problems cropped up while operating NSP,
+                                            Applicants and Institutes may contact NSP Helpdesk through email at
+                                            helpdesk[at]nsp[dot]gov[dot]in or through phone at 0120 – 6619540(from 8 AM to 8
+                                            PM on all days, excluding holidays)
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-info-circle">
+                                            </i>&nbsp;Students applying from the State of Jharkhand in “CENTRAL SECTOR
+                                            SCHEME OF SCHOLARSHIPS FOR COLLEGE AND UNIVERSITY STUDENTS” of MHRD (DOHE) are
+                                            requested to enter their 12th Roll code along with their roll no in the
+                                            application form.
+                                            For example – Roll Code is 11066 and Roll No is 20168 For Jharkhand Board
+                                            Students then enter 1106620168 (RollcodeRollNo) in Roll No Column of
+                                            Application.
+                                        </li>
+                                        <!--                                    <li>
+                                        <i class="fa fa-info-circle"></i>&nbsp;Students applying from the State of  Jharkhand in “CENTRAL SECTOR SCHEME OF SCHOLARSHIPS FOR COLLEGE AND UNIVERSITY STUDENTS” of MHRD (DOHE) are requested to enter their 12th Roll code along with their roll no in the application form.<br>
+                                       <br> example – Roll Code is  11066 and Roll No is 20168</br>
+                                       <br> For  Jharkhand  Board Students has to enter 1106620168  format (RollcodeRollNo) in Roll No Column of Application
+                                    </li>-->
+                                    </ul>
+                                </marquee>
+                            </div>
+                        </div>
+                        <div class="card mb-2">
+                            <div class="card-header notificationbg " style="background:#7ca51d;">
+                                <span class="text-white notification">
+                                    <i class="fa fa-newspaper-o"></i> Notice Board - For Institutes
+                                </span>
+                            </div>
+                            <div class="card-body notificationbody border border-info">
+                                <marquee onmouseover="this.stop()" onmouseout="this.start()" behavior="scroll" scrollamount="3" direction="up" loop="infinite" height="165px">
+                                    <ul class="notificationlist list-unstyled text-justify">
+                                        <!--                                    <li>
+                                        <i class="fa fa-info-circle"></i>&nbsp;The institutes, not having login credentials are advised to fill the KYC Registration Form and 
+                                           get it approved by District Nodal Officer (DNO) or State Nodal Officer (SNO).
+                                    </li>-->
+                                        <li>
+                                            <i class="fa fa-info-circle"></i>&nbsp;The institutes, not having login
+                                            credentials are advised to fill the KYC Registration Form and get it approved by
+                                            District Nodal Officer (DNO) or State Nodal Officer (SNO).
+                                            Option to apply for Institute KYC Registration is available under “Institute
+                                            Corner” section on the portal.
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-info-circle"></i>&nbsp;The detailed operational steps involved
+                                            in filling the Institute KYC Registration Form is available under the option
+                                            "Institute Information" at “Institute Corner”section on the portal.
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-info-circle"></i>&nbsp;All Institutes are advised to refer
+                                            “Frequently Asked Questions (FAQs)” and “Institute Operational Manual” available
+                                            under Institute Corner,
+                                            for assistance on various operational issues related to Institute’s onboarding
+                                            and operations.
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-info-circle"></i>&nbsp;INO can now do verifications by entering
+                                            TOTP also by installing the maadhaar app in their mobile phones.
+                                        </li>
+                                        <!--                                    <li>
+                                        <i class="fa fa-info-circle"></i>&nbsp;The detailed operational steps involved in filling the Institute KYC Registration Form is available
+                                            under "Important Documents" section  on the portal.
+                                    </li>-->
+                                        <!--                                    <li>
+                                        <i class="fa fa-info-circle"></i> <a style="color:#b73333;" href="/public/FAQ/NSP_SOP.pdf" target="_blank">&nbsp;Standard Operating Procedures for NSP</a>
+                                    </li>-->
+
+                                    </ul>
+                                </marquee>
+                            </div>
+                        </div>
+                        <div class="card mb-2">
+                            <div class="card-header notificationbg b" style="background:#7ca51d;">
+                                <span class="text-white notification">
+                                    <i class="fa fa-clipboard"></i> Notice Board - For Nodal Officers
+                                </span>
+                            </div>
+                            <div class="card-body notificationbody border border-success">
+                                <marquee onmouseover="this.stop()" onmouseout="this.start()" behavior="scroll" scrollamount="3" direction="up" loop="infinite" height="165px">
+                                    <ul class="notificationlist list-unstyled text-justify">
+                                        <li>
+                                            <i class="fa fa-info-circle"></i> The National Scholarships Portal has been
+                                            launched for AY 2022-23. Students can apply for Scholarships(Fresh &amp;
+                                            Renewal) in AY 2022-23 w.e.f 20th July, 2022
+                                        </li>
+                                        <!--                                      <li>
+                                        <i class="fa fa-info-circle"></i>&nbsp; Coming Soon...
+                                    </li>-->
+                                    </ul>
+                                </marquee>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-8">
+                        <div id="accordion btn-group">
+                            <button type="button" class="card-btn btn " style="background:#7ca51d;" data-toggle="collapse" data-target="#collapseA">
+
+                                <b class="header-title float-left" style="color:aliceblue">
+                                    State</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <i class="fas fa-plus float-right "></i>
+                            </button>
+
+                            <button type="button" class="card-btn btn " style="background:#7ca51d;" data-toggle="collapse" data-target="#collapseB">
+
+                                <b class="header-title float-left" style="color:aliceblue">
+                                    Country</b>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <i class="fas fa-plus float-right "></i>
+                            </button><br><br>
+
+                            <?php
+
+                            $sql = "SELECT * FROM `scholarship_details` WHERE `scholarship_status` = 2 AND `state` IS NOT null";
+                            $result = mysqli_query($conn, $sql);
+                            if (mysqli_num_rows($result) > 0) {
+                                $i = 0;
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    $id = $row['id'];
+                            ?>
+                                    <div id="collapseA" class="collapseA">
+                                        <div class="card-body">
+                                            <div class="accordion" id="accordionExample">
+                                                <div class="accordion-item">
+                                                    <h1 class="accordion-header" style="background:#cfe789" id="heading<?php echo $id; ?>">
+
+                                                        <button class="accordion-button " <?php if ($i != 0) {
+                                                                                                echo "collapse";
+                                                                                            } ?>"" style="color:#7ca51d;" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?php echo $id; ?>" aria-expanded="<?php if ($i == 0) {
+                                                                                                                                                                                                                                    echo "true";
+                                                                                                                                                                                                                                } else {
+                                                                                                                                                                                                                                    echo "false";
+                                                                                                                                                                                                                                } ?>" aria-controls="collapse<?php echo $id; ?>">
+                                                            <b><?php $row['state'] ?></b>
+                                                        </button>
+                                                    </h1>
+                                                    <div id="collapse<?php echo $id; ?>" class="accordion-collapse collapse " <?php if ($i == 0) {
+                                                                                                                                    echo "show";
+                                                                                                                                } ?>"" aria-labelledby="heading<?php echo $id; ?>" data-bs-parent="#accordionA">
+                                                        <div class="accordion-body">
+                                                            <table class="table table-striped">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th scope="col">Sr no.</th>
+                                                                        <th scope="col">Scholarship name</th>
+                                                                        <th scope="col">Starting Date</th>
+                                                                        <th scope="col">Ending Date</th>
+                                                                        <th scope="col">Apply for Schholarship</th>
+                                                                        <th>GuidesLines/FAQ</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <?php
+                                                                    $statwhich = $row['state'];
+                                                                    $state = "SELECT * FROM `scholarship_details` WHERE `scholarship_status` = 2 AND `state` = $statwhich";
+                                                                    $samestate = mysqli_query($conn, $state);
+                                                                    $searchUser = "SELECT * FROM `special_user` WHERE `email` = ? AND `status` != 0 AND `portal_url` != ?";
+                                                                    $queryForUser = $conn->prepare($searchUser);
+                                                                    $queryForUser->bind_param("ss", $email,$purl);
+                                                                    $queryForUser->execute();
+                                                                    $userFound = $queryForUser->get_result();
+                                                                    if (mysqli_num_rows($samestate) > 0) {
+                                                                        $j = 0;
+                                                                        while ($rowSameState = mysqli_fetch_assoc($result)) {
+                                                                            $id = $rowSameState['id'];
+                                                                    ?>
+                                                                            <tr>
+                                                                                <th scope="row"><?php echo $j; ?></th>
+                                                                                <td><?php $rowSameState['name'] ?></td>
+                                                                                <td><?php $rowSameState['s_date'] ?></td>
+                                                                                <td><?php $rowSameState['e_date'] ?></td>
+                                                                                <td style="text-align: center;"><button class="btn" style=" color:aliceblue;background-color:#7ca51d;"><a href="<?php echo $rowSameState['link']; ?>">Apply</a></button></td>
+                                                                                <td><a href="<?php $rowSameState['guidence'] ?>" style="color:#7ca51d;">Guidence</a> &nbsp; <a href="<?php $rowSameState['faq'] ?>" style="color:#7ca51d;">FAQ</a></td>
+                                                                            </tr>
+                                                                    <?php
+                                                                        }
+                                                                        $j++;
+                                                                    }
+                                                                    ?>
+                                                                </tbody>
+                                                            </table>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            <?php
+                                }
+                                $i++;
+                            }
+                            ?>
+                            <?php
+
+                            $sql1 = "SELECT * FROM `scholarship_details` WHERE `scholarship_status` = 2 AND `country` IS NOT NULL";
+                            $result1 = mysqli_query($conn, $sql1);
+                            if (mysqli_num_rows($result1) > 0) {
+                                $i = 0;
+                                while ($row = mysqli_fetch_assoc($result1)) {
+                                    $id = $row['id'];
+                            ?>
+                                    <div id="collapseB" class="collapseB">
+                                        <div class="card-body">
+                                            <div class="accordion" id="accordionExample">
+                                                <div class="accordion-item">
+                                                    <h1 class="accordion-header" style="background:#cfe789" id="heading<?php echo $id; ?>">
+
+                                                        <button class="accordion-button " <?php if ($i != 0) {
+                                                                                                echo "collapse";
+                                                                                            } ?>"" style="color:#7ca51d;" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?php echo $id; ?>" aria-expanded="<?php if ($i == 0) {
+                                                                                                                                                                                                                                    echo "true";
+                                                                                                                                                                                                                                } else {
+                                                                                                                                                                                                                                    echo "false";
+                                                                                                                                                                                                                                } ?>" aria-controls="collapse<?php echo $id; ?>">
+                                                            <b><?php $row['country'] ?></b>
+                                                        </button>
+                                                    </h1>
+                                                    <div id="collapse<?php echo $id; ?>" class="accordion-collapse collapse " <?php if ($i == 0) {
+                                                                                                                                    echo "show";
+                                                                                                                                } ?>"" aria-labelledby="heading<?php echo $id; ?>" data-bs-parent="#accordionB">
+                                                        <div class="accordion-body">
+                                                            <table class="table table-striped">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th scope="col">Sr no.</th>
+                                                                        <th scope="col">Scholarship name</th>
+                                                                        <th scope="col">Starting Date</th>
+                                                                        <th scope="col">Ending Date</th>
+                                                                        <th scope="col">Apply for Schholarship</th>
+                                                                        <th>GuidesLines/FAQ</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <?php
+                                                                    $countryWhich = $row['country'];
+                                                                    $state = "SELECT * FROM `scholarship_details` WHERE `scholarship_status` = 2 AND `state` = $countryWhich";
+                                                                    $sameCountry = mysqli_query($conn, $state);
+                                                                    if (mysqli_num_rows($sameCountry) > 0) {
+                                                                        $j = 0;
+                                                                        while ($rowSameCountry = mysqli_fetch_assoc($result)) {
+                                                                            $id = $rowSameCountry['id'];
+                                                                    ?>
+                                                                            <tr>
+                                                                                <th scope="row"><?php echo $j; ?></th>
+                                                                                <td><?php $rowSameCountry['name'] ?></td>
+                                                                                <td><?php $rowSameCountry['s_date'] ?></td>
+                                                                                <td><?php $rowSameCountry['e_date'] ?></td>
+                                                                                <td style="text-align: center;"><button class="btn" style=" color:aliceblue;background-color:#7ca51d;"><a href="<?php echo $rowSameCountry['link']; ?>">Apply</a></button></td>
+                                                                                <td><a href="<?php $rowSameCountry['guidence'] ?>" style="color:#7ca51d;">Guidence</a> &nbsp; <a href="<?php $rowSameCountry['faq'] ?>" style="color:#7ca51d;">FAQ</a></td>
+                                                                            </tr>
+                                                                    <?php
+                                                                        }
+                                                                        $j++;
+                                                                    }
+                                                                    ?>
+                                                                </tbody>
+                                                            </table>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            <?php
+                                }
+                                $i++;
+                            }
+                            ?>
+
+                        </div>
+                    </div>
+                    <script>
+                        $('.card-btn').click(function() {
+                            $(this).find('i').toggleClass('fas fa-plus fas fa-minus')
+                        });
+                    </script>
+                </div>
+            </div>
+        </section>
+        <section class="footerthird pt-2" style="background-color: #cfe789;">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 d-flex">
+                        <ul class="list-unstyled list-inline justify-content-center mx-auto">
+                            <li class="list-inline-item">
+                                <a href="#" target="_self">Copyright
+                                    Policy</a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#" target="_self">Privacy Policy</a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#" target="_self">Terms and
+                                    Conditions</a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#" target="_self">Disclaimer</a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#" target="_self">Hyperlink
+                                    Policy</a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#" target="_self">Site Map</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="footerfirst pt-3" style="background-color: black;color:white">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-8 col-md-12 col-sm-12 offset-xl-3 offset-lg-2 pb-1 pt-1">
+                        <p class="text-center disclaimer">
+                            This site is designed, developed with all copyrights.<br> Updated at 9th October 2022
+                        </p>
+                    </div>
+                    <div class="col-xl-8 col-lg-10 col-md-12 col-sm-12 offset-xl-2 offset-lg-1 pb-2">
+                        <div class="row">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <script>
+            $(document).ready(function() {
+                var url = window.location;
+                $('ul.topmenulink li.nav-item a').each(function() {
+                    if (this.href == url) {
+                        $("ul.topmenulink li.nav-item").each(function() {
+                            if ($(this).hasClass("active")) {
+                                $(this).removeClass("active");
+                            }
+                        });
+                        $(this).parents().addClass('active');
+                    }
+                });
+
+            });
+        </script>
+        <script>
+            const $dropdown = $(".dropdown");
+            const $dropdownToggle = $(".dropdown-toggle");
+            const $dropdownMenu = $(".dropdown-menu");
+            const showClass = "show";
+
+            $(window).on("load resize", function() {
+                if (this.matchMedia("(min-width: 768px)").matches) {
+                    $dropdown.hover(
+                        function() {
+                            const $this = $(this);
+                            $this.addClass(showClass);
+                            $this.find($dropdownToggle).attr("aria-expanded", "true");
+                            $this.find($dropdownMenu).addClass(showClass);
+                        },
+                        function() {
+                            const $this = $(this);
+                            $this.removeClass(showClass);
+                            $this.find($dropdownToggle).attr("aria-expanded", "false");
+                            $this.find($dropdownMenu).removeClass(showClass);
+                        }
+                    );
+                } else {
+                    $dropdown.off("mouseenter mouseleave");
+                }
+            });
+        </script>
+        <script>
+            $(function() {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
+        </script>
+
+</body>
+
+</html>
